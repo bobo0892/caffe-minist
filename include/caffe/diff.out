@@ -1,0 +1,36 @@
+4,9c4,6
+< //#include <memory>
+< #include <boost/shared_ptr.hpp>
+< #if 0
+< #include <gflags/gflags.h>
+< #include <glog/logging.h>
+< #endif
+---
+> #include <memory>
+> #include <cmath>
+> #include <cstdint>
+23c20,22
+< #include "caffe/util/device_alternate.hpp"
+---
+> #ifndef CPU_ONLY
+> #define CPU_ONLY 1
+> #endif
+25,32c24
+< // gflags 2.1 issue: namespace google was changed to gflags without warning.
+< // Luckily we will be able to use GFLAGS_GFAGS_H_ to detect if it is version
+< // 2.1. If yes, we will add a temporary solution to redirect the namespace.
+< // TODO(Yangqing): Once gflags solves the problem in a more elegant way, let's
+< // remove the following hack.
+< #ifndef GFLAGS_GFLAGS_H_
+< // namespace gflags = google;
+< #endif  // GFLAGS_GFLAGS_H_
+---
+> #include "caffe/util/device_alternate.hpp"
+79,80c71
+< using boost::shared_ptr;
+< //using std::shared_ptr;
+---
+> using std::shared_ptr;
+157,158d147
+< 
+<   static bool CheckDevice();
